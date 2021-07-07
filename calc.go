@@ -2,36 +2,41 @@ package main
 
 import (
 	"bufio"
-	"bytes"
 	"fmt"
+	"os"
 	"strconv"
 )
 
 //入力からスライスを作成
 func makeSlice() {
-	var stdin = bytes.NewBuffer([]byte("1 1 +"))
-	scanner := bufio.NewScanner(stdin)
-	scanner.Split(bufio.ScanWords)
 	slices := []string{}
-	for scanner.Scan() {
-		slice := scanner.Text()
+	for {
+		//標準入力から受け取る
+		slice := fmt.Scan(&x)
 		slices = append(slices, slice)
+		if slice == "\n" {
+			break
+		}
 	}
-	fmt.Println(slices)
 }
 
 //答えを表示
 func displayAnswer(i int) int {
+	//標準出力
 	fmt.Println(i)
+	return 42
 }
 
 //文字列からx,yを数値として抜き出す
-func getXY(s string) (x int, y int) {
-	//input  1 3 +
-	//return 1 3
-
-	x = strconv.Itoa(s[0])
-	y = strconv.Itoa(s[1])
+func getXY(s string) (int, int) {
+	//input  "13+"
+	//return 1,3
+	A := s[0:1]
+	B := s[1:2]
+	//fmt.Println(A)
+	//fmt.Println(B)
+	x, _ := strconv.Atoi(A)
+	y, _ := strconv.Atoi(B)
 
 	return x, y
 }
@@ -55,5 +60,5 @@ func calculat(x int, y int, cal string) int {
 }
 
 func main() {
-
+	makeSlice()
 }
