@@ -16,10 +16,10 @@ func makeSlice() []string {
 }
 
 //答えを表示
-func displayAnswer(i int) int {
+func displayAnswer(s string) string {
 	//標準出力
-	fmt.Println(i)
-	return i
+	fmt.Println(s)
+	return s
 }
 
 //文字列からx,yを数値として抜き出す
@@ -38,19 +38,19 @@ func getXY(s []string) (int, int, string) {
 }
 
 //2つの数値と四則演算子から計算結果を返す
-func calculat(x int, y int, cal string) int {
-	answer := 0
+func calculat(x int, y int, cal string) string {
+	var answer string
 	if cal == "+" {
-		answer = x + y
+		answer = strconv.Itoa(x + y)
 	}
 	if cal == "-" {
-		answer = x - y
+		answer = strconv.Itoa(x - y)
 	}
 	if cal == "*" {
-		answer = x * y
+		answer = strconv.Itoa(x * y)
 	}
 	if cal == "/" {
-
+		answer = strconv.Itoa(x) + "/" + strconv.Itoa(y)
 	}
 	return answer
 }
@@ -58,4 +58,5 @@ func calculat(x int, y int, cal string) int {
 func main() {
 	slice := makeSlice()
 	fmt.Println(slice)
+	displayAnswer(calculat(getXY(slice)))
 }
