@@ -18,11 +18,12 @@ func Test01(t *testing.T) {
 	}
 }*/
 
-//文字列からx,yを数値として抜き出す 川原
+//スライスからx,yを数値として抜き出す 川原
 func Test03(t *testing.T) {
 	expX := 1
 	expY := 3
-	resultX, resultY := getXY("13+")
+	str := []string{"1", "3", "+"}
+	resultX, resultY := getXY(str)
 	if (expX != resultX) || (expY != resultY) {
 		t.Errorf("test03 Error")
 	}
